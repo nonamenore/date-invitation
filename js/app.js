@@ -279,8 +279,11 @@
     fd.append("access_key", accessKey);
     fd.append("subject", CONFIG.web3forms.subject || "约会邀请反馈");
     fd.append("botcheck", "");                       // 防垃圾字段，留空即可
-    fd.append("回复邮箱", CONFIG.web3forms.reply_to || "");
-    fd.append("内容", bodyText);
+    // 字段名必须是 ASCII：Web3Forms 服务端对中文字段名会按 ISO-8859-1
+    // 错误编码，导致邮件里字段标签乱码（字段值中文则正常）。
+    // 中文标识写进值里，既保留可读性又避免乱码。
+    fd.append("reply_email", "回复邮箱：" + (CONFIG.web3forms.reply_to || ""));
+    fd.append("content", bodyText);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
