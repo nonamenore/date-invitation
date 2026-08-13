@@ -9,7 +9,7 @@ const CONFIG = {
      3. 去该邮箱收一封验证邮件，里面有你的 Access Key（形如 12345678-xxxx-xxxx-xxxx-xxxxxxxxxxxx）
      4. 把下面 access_key 的值替换成你自己的 Key 即可（保留英文引号） */
   web3forms: {
-    access_key: "PLEASE_FILL_YOUR_ACCESS_KEY",
+    access_key: "50839b0e-5260-4e74-8215-cee76a5a2e6a",
     subject: "💕 约会邀请反馈",            // 邮件标题
     reply_to: "1705039880@qq.com",          // 收件邮箱（以 Web3Forms 后台绑定为准）
   },
