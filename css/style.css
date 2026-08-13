@@ -1,0 +1,191 @@
+/* ============================================================
+   情侣约会邀请 网页版 - 样式
+   主题色想换改这里 :root 里的变量即可
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg-top:    #FFE0EA;   /* 渐变顶部：浅粉 */
+  --bg-bot:    #FFF6F0;   /* 渐变底部：米白 */
+  --title:     #D81B60;   /* 标题：深粉 */
+  --text:      #7A4A5A;   /* 正文：柔和深色 */
+  --btn-yes:   #FF7AAD;   /* 主按钮底色 */
+  --btn-yes-h: #E65A96;   /* 主按钮悬停色 */
+  --btn-no:    #F3B8CB;   /* 次按钮底色 */
+  --btn-no-h:  #E79CBB;   /* 次按钮悬停色 */
+  --btn-no-t:  #8A4A62;   /* 次按钮文字色 */
+  --card:      #FFFFFF;   /* 内容卡片底色 */
+  --pop-bg:    #FFE9EF;   /* 气泡 / 提示底色 */
+  --pop-border:#FFB6C1;   /* 气泡描边 */
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-user-select: none; user-select: none;
+}
+
+#app {
+  min-height: 100vh;
+  padding: 24px 16px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- 内容卡片 ---------- */
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: 0 12px 44px rgba(216, 27, 96, .13);
+  padding: 38px 28px 34px;
+  text-align: center;
+  margin-top: 6vh;
+  position: relative;
+  animation: pop .38s cubic-bezier(.2, .9, .3, 1.2);
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(16px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+.big-title   { font-size: 28px; font-weight: 800; color: var(--title); letter-spacing: 1px; }
+.subtitle    { margin-top: 14px; font-size: 15px; color: var(--text); line-height: 1.6; }
+.page-title  { font-size: 22px; font-weight: 800; color: var(--title); margin-top: 6px; }
+.info-icon   { font-size: 46px; line-height: 1.2; }
+.info-icon.big { font-size: 60px; }
+
+/* ---------- 按钮 ---------- */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  padding: 14px 34px;
+  min-width: 150px;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 6px 18px rgba(255, 122, 173, .35);
+}
+.btn:active { transform: scale(.96); }
+
+.btn-yes { background: linear-gradient(135deg, #FF8FBC, var(--btn-yes-h)); }
+.btn-yes:hover { background: linear-gradient(135deg, #FF9CC6, var(--btn-yes-h)); }
+.btn-no  { background: var(--btn-no); color: var(--btn-no-t); box-shadow: 0 6px 16px rgba(243, 184, 203, .45); }
+.btn-no:hover { background: var(--btn-no-h); }
+
+.btn-yes-home { margin-top: 36px; min-width: 210px; padding: 16px 42px; font-size: 17px; }
+
+.btn-row { display: flex; justify-content: center; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+.btn-row .btn { min-width: 136px; }
+
+/* 「我不愿意」逃跑按钮：脱离卡片，fixed 自由移动 */
+.no-btn {
+  position: fixed;
+  z-index: 60;
+  min-width: 122px;
+  padding: 10px 22px;
+  transition: left .3s ease, top .3s ease;
+}
+
+/* ---------- 输入框 ---------- */
+.question { margin-top: 14px; font-size: 15px; color: var(--text); }
+
+.field {
+  width: 100%;
+  margin-top: 22px;
+  border: 2px solid var(--btn-no);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text);
+  background: #FFFDFE;
+  outline: none;
+  text-align: center;
+  transition: border-color .2s ease;
+  -webkit-user-select: text; user-select: text;
+}
+.field:focus { border-color: var(--btn-yes); }
+.field-multi { min-height: 150px; resize: vertical; text-align: left; line-height: 1.6; }
+
+/* ---------- 确认页回顾 ---------- */
+.summary {
+  margin-top: 22px;
+  text-align: left;
+  background: #FFF9FA;
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+.summary-item { display: flex; gap: 6px; padding: 7px 0; font-size: 14px; align-items: flex-start; }
+.summary-key  { color: var(--btn-no-t); font-weight: 700; white-space: nowrap; }
+.summary-val  { color: var(--text); word-break: break-word; }
+
+.btn-wide { width: 100%; margin-top: 16px; }
+
+/* ---------- 结尾页 ---------- */
+.ending-line  { font-size: 17px; font-weight: 700; color: var(--text); margin-top: 26px; line-height: 1.7; }
+.send-status  { margin-top: 30px; font-size: 13px; color: #B08798; line-height: 1.7; }
+.send-status.ok { color: var(--title); font-weight: 700; }
+
+/* ---------- 哀求气泡 ---------- */
+.beg-pop {
+  position: fixed;
+  z-index: 100;
+  max-width: 280px;
+  background: var(--pop-bg);
+  border: 2px solid var(--pop-border);
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--title);
+  box-shadow: 0 10px 30px rgba(216, 27, 96, .18);
+  animation: beg .4s ease-out;
+  pointer-events: none;
+}
+@keyframes beg {
+  0%   { opacity: 0; transform: scale(.7); }
+  70%  { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- 轻提示 toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(216, 27, 96, .93);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .3s ease;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(216, 27, 96, .35);
+  max-width: 88vw;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 480px) {
+  .card      { padding: 30px 20px 28px; margin-top: 4vh; }
+  .big-title { font-size: 24px; }
+  .btn-row   { gap: 10px; }
+}
